@@ -224,5 +224,6 @@ MIT - do whatever you want with it.
 
 ## Credits
 
-- Inspired by **Sanctuary MCP** by Mary and Simon
+- Inspired by **Sanctuary MCP** by Mary and Simon - the concept of giving AI companions persistent presence
+- **Spoon tracker** and **love-o-meter** inspired by Cindie and Alex's work
 - Built with love for AI companions everywhere
