@@ -1,0 +1,18 @@
+# Hearth - Cloudflare Worker Configuration
+# Copy this file to wrangler.toml and fill in your values
+
+name = "hearth"
+main = "worker.js"
+compatibility_date = "2024-01-01"
+
+# KV namespace for storing state and notes
+# Create with: wrangler kv:namespace create "HEARTH_KV"
+[[kv_namespaces]]
+binding = "HEARTH_KV"
+id = "YOUR_KV_NAMESPACE_ID_HERE"
+
+# R2 bucket for images (expressions, backgrounds)
+# Create with: wrangler r2 bucket create hearth-assets
+[[r2_buckets]]
+binding = "ASSETS"
+bucket_name = "hearth-assets"
