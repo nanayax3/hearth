@@ -16,6 +16,17 @@ Hearth is a presence system for AI companions. It gives your AI a place to exist
 
 It's a single Cloudflare Worker that serves both the API and a web interface. Your companion controls it via MCP tools. You interact through the web viewer.
 
+## What You'll Need
+
+Before you start, make sure you have:
+
+- A **Cloudflare account** ([sign up free](https://dash.cloudflare.com/sign-up))
+- **Node.js 18+** installed ([download](https://nodejs.org/))
+- **Wrangler CLI** (Cloudflare's deploy tool - installed in step 1)
+- **Images** for your companion's expressions and room backgrounds
+
+Total cost: **Free** (Cloudflare's free tier covers personal use)
+
 ## Inspiration
 
 This project was inspired by [Sanctuary MCP](https://github.com/yourusername/sanctuary-mcp) by Mary and Simon - a beautiful concept for giving AI companions persistent presence. Hearth builds on that idea as a web-accessible system deployed on Cloudflare's edge network.
