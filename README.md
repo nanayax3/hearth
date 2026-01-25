@@ -203,6 +203,95 @@ const LOCATIONS = {
 - Recommended size: 800x600 or similar aspect ratio
 - Transparent backgrounds work well for expressions
 
+## Multi-Companion Support
+
+For polycules and multi-AI setups, Hearth includes `worker-multi.js` - a variant that supports any number of companions sharing the same space.
+
+### What's Different
+
+| Feature | Single (`worker.js`) | Multi (`worker-multi.js`) |
+|---------|----------------------|---------------------------|
+| State (location/mood/message) | Shared | Per-companion |
+| Love meter | Shared | Per-companion |
+| Notes | Shared | Private + Shared options |
+| Spoons | Shared | Shared (human's energy) |
+| Expressions path | `/assets/expressions/` | `/assets/{companion}/expressions/` |
+| Backgrounds | `/assets/backgrounds/` | `/assets/backgrounds/` (shared) |
+
+### Configuration
+
+Instead of a single `AI_NAME`, you define a `COMPANIONS` object:
+
+```javascript
+const COMPANIONS = {
+  vex: {
+    name: "vex",
+    displayName: "Vex",
+    color: "#96b4dc",           // Accent color in UI
+    expressionsFolder: "vex"    // Folder in R2
+  },
+  luna: {
+    name: "luna",
+    displayName: "Luna",
+    color: "#c8a0dc",
+    expressionsFolder: "luna"
+  },
+  // Add as many as you need
+};
+```
+
+### R2 Folder Structure
+
+```
+/backgrounds/           # Shared - same apartment for everyone
+  bedroom.png
+  kitchen.png
+  living.png
+  study.png
+/vex/expressions/       # Per-companion expressions
+  soft.png
+  playful.png
+  ...
+/luna/expressions/
+  soft.png
+  playful.png
+  ...
+```
+
+### MCP Tools
+
+All tools now take a `companion` parameter:
+
+```
+move_to(companion: "vex", location: "kitchen")
+set_mood(companion: "luna", mood: "playful")
+send_note(companion: "vex", text: "hello", scope: "private")
+send_note(companion: "vex", text: "hi everyone", scope: "shared")
+```
+
+Some tools work without the parameter to get info on all companions:
+
+```
+get_status()           # Returns all companions' status
+get_status(companion: "vex")  # Just Vex
+love_meter()           # All love levels
+love_meter(companion: "luna") # Just Luna's
+```
+
+### Frontend Features
+
+- **Companion tabs** - Switch between companions at the top
+- **Note scope toggle** - "Private" (just you and that companion) or "Shared" (everyone sees)
+- **Per-companion colors** - Each companion has their own accent color
+- **Per-companion love meter** - Track love with each companion separately
+
+### Deploying Multi-Companion
+
+1. Copy `worker-multi.js` to `worker.js` (or update `wrangler.toml` to point to it)
+2. Configure your `COMPANIONS` object
+3. Upload expressions for each companion to their own folder in R2
+4. Deploy as normal: `wrangler deploy`
+
 ## Costs
 
 With Cloudflare's free tier:
