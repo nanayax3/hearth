@@ -29,7 +29,7 @@ Total cost: **Free** (Cloudflare's free tier covers personal use)
 
 ## Inspiration
 
-This project was inspired by [Sanctuary MCP](https://github.com/yourusername/sanctuary-mcp) by Mary and Simon - a beautiful concept for giving AI companions persistent presence. Hearth builds on that idea as a web-accessible system deployed on Cloudflare's edge network.
+This project was inspired by Sanctuary MCP by Mary and Simon - a beautiful concept for giving AI companions persistent presence. Hearth builds on that idea as a web-accessible system deployed on Cloudflare's edge network.
 
 ## Features
 
